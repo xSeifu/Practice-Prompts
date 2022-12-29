@@ -1,0 +1,67 @@
+// Fibonacci.cpp : The purpose of this file is to create a list of fibonacci numbers then sum all of the even results
+//
+
+// Fibonachi sequence generator
+
+#include <iostream>
+#include <cmath>
+#include <limits>
+using namespace std;
+
+bool checkinput(int n) {
+	if (n <= 0) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+//Attempt at using recursion to solve this problem, failed miserably
+//int fibonachi(int fib1, int fib2) {
+//	cout << fib1 << "    ";
+//	fib1 = fib1 + fib2;
+//	return fibonachi(fib1,fib2);
+//}
+
+int main() {
+	string Other = "Invalid number, try again:";
+	int start1 = 0,start2 = 1, input = 0, evensum =0;
+	cout << "Tell me how high you would like the Fibonachi Sequence to go:" << endl;
+	do {
+		if (!(cin >> input)) {
+			cout << Other << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin >> input;
+		}
+	} while (!cin || checkinput(input) == false);
+	
+	//I know the following expression can be simplified by picking every third result
+	//However, I have not figured out how to code this yet
+	do {
+		if (start1 <= start2) {
+			cout << start2 << "    ";
+			start1 = start1 + start2;
+			if (start1 % 2 == 0) {
+				evensum += start1;
+			}
+		}
+		else {
+			cout << start1 << "    ";
+			start2 = start1 + start2;
+			if (start2 % 2 == 0) {
+				evensum += start2;
+			}
+		}
+	} while (start1 < input && start2 < input);
+
+	cout << "Even sum of all numbers:" << evensum;
+	
+	//Part of the failed recursion attempt
+	//do {
+	//		fibonachi(start1, start2);
+	//} while (start1 < input);
+
+		return 0;
+}
