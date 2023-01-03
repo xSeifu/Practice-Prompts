@@ -1,0 +1,25 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+// Function to check if a number is a palindrome
+bool is_palindrome(int n) {
+  string s = to_string(n);
+  string r = s;
+  reverse(r.begin(), r.end());
+  return s == r;
+}
+
+int main() {
+  for (int i = 999; i >= 100; i--) {
+    for (int j = 999; j >= i; j--) {
+      int product = i * j;
+      if (is_palindrome(product)) {
+        cout << "The largest palindrome made from the product of two 3-digit numbers is " << product << endl;
+        return 0;
+      }
+    }
+  }
+  return 0;
+}
