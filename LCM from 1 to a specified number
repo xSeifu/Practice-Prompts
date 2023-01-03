@@ -1,0 +1,30 @@
+#include <iostream>
+#include <numeric>
+
+using namespace std;
+
+int main() {
+    // Read in the value of n
+    cout << "Enter a number: ";
+    int n;
+    cin >> n;
+    // Initialize an array of the numbers from 1 to n
+    int* numbers = new int[n];
+    for (int i = 0; i < n; i++) {
+        numbers[i] = i + 1;
+    }
+
+    // Calculate the LCM of the numbers using the std::lcm function from the <numeric> library
+    long long result = lcm(numbers[0], numbers[1]);
+    for (int i = 2; i < n; i++) {
+        result = lcm(result, numbers[i]);
+    }
+
+    // Print the result
+    cout << "The LCM of the numbers from 1 to " << n << " is: " << result << std::endl;
+
+    // Free the dynamically allocated memory
+    delete[] numbers;
+
+    return 0;
+}
