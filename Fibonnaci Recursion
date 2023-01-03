@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int fib(int x) {
+    if ((x == 1) || (x == 0)) {
+        return(x);
+    }
+    else {
+        return(fib(x - 1) + fib(x - 2));
+    }
+}
+
+int main() {
+    int x, y=0, i = 0;
+    cout << "Enter the limit of the series : ";
+    cin >> x;
+    cout << "\nFibonnaci Series less than " << x << ": ";
+    do 
+    {
+        y = fib(i);
+        if (y < x) {
+            cout << " " << y;
+            i++;
+        }
+    } while (y < x);
+    return 0;
+}
