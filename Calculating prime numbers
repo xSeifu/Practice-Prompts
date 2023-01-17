@@ -1,0 +1,43 @@
+import math
+
+def IsNumPrime(n):
+    i=3
+    if n%2!=0:
+        while i <= math.sqrt(n):
+            if n%i==0:
+                return False
+            i+=2
+    elif n%2==0:
+        return False
+    return True
+def GetPrimeNumbers(n):
+    prime_list=[2,3]
+    i=1
+    j=2
+    while j<=n:
+        prime=6*i-1
+        if IsNumPrime(prime):
+            j+=1
+            if j>n:
+                break
+            prime_list.append(prime)
+        prime=6*i+1
+        if IsNumPrime(prime):
+            j+=1
+            if j>n:
+                break
+            prime_list.append(prime)
+        i+=1        
+    return prime_list
+amount = int(input("Which prime number would you like returned?"))
+print("Please wait while I get that number for you. . .")
+result = GetPrimeNumbers(amount)
+length = len(result) -1
+print(f"The {amount} prime number is {result[length]}")
+answer = input("Would you like to print the full list?")
+if answer=="yes":
+    print("Here is the list of prime numbers to this point")
+    for item in result:
+        print(item)
+else:
+    print("Goodbye")
